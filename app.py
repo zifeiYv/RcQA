@@ -3,7 +3,10 @@ from flask import Flask, request
 from predict import answer
 import logging
 from logging.handlers import RotatingFileHandler
+import os
 
+if not os.path.exists('logs'):
+    os.mkdir('logs')
 logger = logging.getLogger('app')
 logger.setLevel(logging.DEBUG)
 handler = RotatingFileHandler('./logs/' + 'app.log', maxBytes=10 * 1024 * 1024,
